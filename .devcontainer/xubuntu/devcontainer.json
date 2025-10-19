@@ -1,6 +1,6 @@
 {
   "name": "Xubuntu",
-  "service": "qemu",
+  "service": "tailnet-qemu",
   "containerEnv": {
     "BOOT": "xubuntu"
   },  

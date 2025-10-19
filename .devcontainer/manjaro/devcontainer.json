@@ -1,6 +1,6 @@
 {
   "name": "Manjaro",
-  "service": "qemu",
+  "service": "tailnet-qemu",
   "containerEnv": {
     "BOOT": "manjaro"
   },  

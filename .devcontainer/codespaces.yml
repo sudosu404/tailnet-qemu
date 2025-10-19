@@ -1,7 +1,7 @@
 services:
   qemu:
     image: ghcr.io/sudosu404/tailnet-qemu:latest
-    container_name: qemu
+    container_name: tailnet-qemu
     environment:
       ALLOCATE: "Y"
       RAM_SIZE: "half"

@@ -1,6 +1,6 @@
 {
   "name": "Rocky Linux",
-  "service": "qemu",
+  "service": "tailnet-qemu",
   "containerEnv": {
     "BOOT": "rocky"
   },  

@@ -1,6 +1,6 @@
 {
   "name": "Alpine Linux",
-  "service": "qemu",
+  "service": "tailnet-qemu",
   "containerEnv": {
     "BOOT": "alpine"
   },  

@@ -34,7 +34,7 @@ source init.sh
 services:
   qemu:
     image: sudosu404/tailnet-qemu
-    container_name: qemu
+    container_name: tailnet-qemu
     environment:
       BOOT: "mint"
     devices:
@@ -284,7 +284,7 @@ kubectl apply -f https://raw.githubusercontent.com/sudosu404/tailnet-qemu/refs/h
   ```yaml
   services:
     qemu:
-      container_name: qemu
+      container_name: tailnet-qemu
       ..<snip>..
       networks:
         vlan:

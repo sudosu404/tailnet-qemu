@@ -5,6 +5,7 @@ services:
     container_name: tailnet-qemu
     environment:
       BOOT: "boot.iso"
+      DHCP: "Y"
     devices:
       - /dev/kvm
       - /dev/net/tun
@@ -18,8 +19,6 @@ services:
       - /dev/fuse
     device_cgroup_rules:
       - 'c *:* rwm'
-    cap_add:
-      - NET_ADMIN
     dns:
       - 172.30.0.3
     ports:

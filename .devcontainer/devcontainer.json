@@ -1,6 +1,6 @@
 {
   "name": "tailnet-qemu",
-  "service": "qemu",
+  "service": "tailnet-qemu",
   "containerEnv": {
     "BOOT": "/storage/boot.iso"
   },  
