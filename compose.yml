@@ -1,10 +1,10 @@
 services:
   tailnet-qemu:
     build: .
-    image: ghcr.io/sudosu404/tailnet-qemu
+    image: ghcr.io/sudosu404/tailnet-qemu:latest
     container_name: tailnet-qemu
     environment:
-      BOOT: "https://enterprise.proxmox.com/iso/proxmox-ve_8.4-1.iso"
+      BOOT: "boot.iso"
     devices:
       - /dev/kvm
       - /dev/net/tun
@@ -14,13 +14,14 @@ services:
       - /dev/sdd
       - /dev/fuse
       - /dev/ptmx
-      - /dev/dri
       - /dev/hwrng
       - /dev/fuse
     device_cgroup_rules:
       - 'c *:* rwm'
     cap_add:
       - NET_ADMIN
+    dns:
+      - 172.30.0.3
     ports:
       - 8006:8006
     volumes:

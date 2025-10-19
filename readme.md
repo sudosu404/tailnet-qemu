@@ -25,6 +25,11 @@ Docker container for running virtual machines using QEMU.
 
 ##### Via Docker Compose:
 
+```bash
+# load storage folder and init proxmox 8 as initia image
+source init.sh
+```
+
 ```yaml
 services:
   qemu:

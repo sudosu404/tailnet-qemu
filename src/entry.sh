@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -Eeuo pipefail
 
-: "${APP:="GNX"}"
+: "${APP:="qemu"}"
 : "${PLATFORM:="x64"}"
 : "${SUPPORT:="https://github.com/sudosu404/tailnet-qemu"}"
 
