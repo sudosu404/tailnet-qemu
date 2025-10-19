@@ -2,7 +2,6 @@ services:
   tailnet-qemu:
     build: .
     image: ghcr.io/sudosu404/tailnet-qemu:latest
-    container_name: tailnet-qemu
     environment:
       BOOT: "boot.iso"
       DHCP: "Y"
@@ -19,6 +18,9 @@ services:
       - /dev/fuse
     device_cgroup_rules:
       - 'c *:* rwm'
+    labels:
+      tsdproxy.enable: "true"
+      tsdproxy.name: "pve"
     dns:
       - 172.30.0.3
     ports:
@@ -27,3 +29,19 @@ services:
       - ./storage:/storage
     restart: always
     stop_grace_period: 2m
+  tsdproxy:
+    image: almeidapaulopt/tsdproxy:latest
+    container_name: tsdproxy
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - tsdproxydata:/data
+    environment:
+      # Get AuthKey from your Tailscale account
+      - TSDPROXY_AUTHKEY=${TSDPROXY_AUTHKEY}
+      # Address of docker server (access to example.com ports)
+      - TSDPROXY_HOSTNAME=${TSDPROXY_HOSTNAME}
+      - DOCKER_HOST=unix:///var/run/docker.sock
+    restart: unless-stopped
+
+volumes:
+  tsdproxydata:
