@@ -4,7 +4,6 @@ services:
     image: ghcr.io/sudosu404/tailnet-qemu:latest
     environment:
       BOOT: "boot.iso"
-      DHCP: "Y"
     devices:
       - /dev/kvm
       - /dev/net/tun
@@ -21,10 +20,9 @@ services:
     labels:
       tsdproxy.enable: "true"
       tsdproxy.name: "pve"
+      tsdproxy.container_port: 8006
     dns:
       - 172.30.0.3
-    ports:
-      - 8006:8006
     volumes:
       - ./storage:/storage
     restart: always
