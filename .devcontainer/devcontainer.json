@@ -1,8 +1,8 @@
 {
-  "name": "Linux Mint",
+  "name": "tailnet-qemu",
   "service": "qemu",
   "containerEnv": {
-    "BOOT": "mint"
+    "BOOT": "/storage/boot.iso"
   },  
   "forwardPorts": [8006],  
   "portsAttributes": {

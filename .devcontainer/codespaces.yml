@@ -1,6 +1,6 @@
 services:
   qemu:
-    image: sudosu404/tailnet-qemu
+    image: ghcr.io/sudosu404/tailnet-qemu:latest
     container_name: qemu
     environment:
       ALLOCATE: "Y"
@@ -15,6 +15,6 @@ services:
     ports:
       - 8006:8006
     volumes:
-      - ./qemu:/storage
+      - ./storage:/storage
     restart: on-failure
     stop_grace_period: 2m

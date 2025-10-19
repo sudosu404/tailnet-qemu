@@ -40,7 +40,7 @@ services:
     ports:
       - 8006:8006
     volumes:
-      - ./qemu:/storage
+      - ./storage:/storage
     restart: always
     stop_grace_period: 2m
 ```
@@ -48,7 +48,7 @@ services:
 ##### Via Docker CLI:
 
 ```bash
-docker run -it --rm --name qemu -e "BOOT=mint" -p 8006:8006 --device=/dev/kvm --device=/dev/net/tun --cap-add NET_ADMIN -v "${PWD:-.}/qemu:/storage" --stop-timeout 120 sudosu404/tailnet-qemu
+docker run -it --rm --name qemu -e "BOOT=mint" -p 8006:8006 --device=/dev/kvm --device=/dev/net/tun --cap-add NET_ADMIN -v "${PWD:-.}/storage:/storage" --stop-timeout 120 sudosu404/tailnet-qemu
 ```
 
 ##### Via Kubernetes:
@@ -149,10 +149,10 @@ kubectl apply -f https://raw.githubusercontent.com/sudosu404/tailnet-qemu/refs/h
 
   ```yaml
   volumes:
-    - ./qemu:/storage
+    - ./storage:/storage
   ```
 
-  Replace the example path `./qemu` with the desired storage folder or named volume.
+  Replace the example path `./storage` with the desired storage folder or named volume.
 
 ### How do I change the size of the disk?
 
@@ -385,7 +385,7 @@ kubectl apply -f https://raw.githubusercontent.com/sudosu404/tailnet-qemu/refs/h
 [build_url]: https://github.com/sudosu404/tailnet-qemu/
 [hub_url]: https://hub.docker.com/r/sudosu404/tailnet-qemu/
 [tag_url]: https://hub.docker.com/r/sudosu404/tailnet-qemu/tags
-[pkg_url]: https://github.com/sudosu404/tailnet-qemu/pkgs/container/qemu
+[pkg_url]: https://github.com/sudosu404/tailnet-qemu/pkgs/container/storage
 
 [Build]: https://github.com/sudosu404/tailnet-qemu/actions/workflows/build.yml/badge.svg
 [Size]: https://img.shields.io/docker/image-size/sudosu404/tailnet-qemu/latest?color=066da5&label=size
