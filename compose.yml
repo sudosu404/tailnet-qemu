@@ -1,7 +1,7 @@
 services:
   tailnet-qemu:
     build: .
-    image: grcr.io/sudosu404/tailnet-qemu:latest
+    image: ghcr.io/sudosu404/tailnet-qemu:latest
     container_name: tailnet-qemu
     environment:
       BOOT: "https://enterprise.proxmox.com/iso/proxmox-ve_8.4-1.iso"
@@ -11,10 +11,7 @@ services:
       - /dev/vhost-net
       - /dev/vhost-vsock
       - /dev/ttyS0
-      - /dev/uinput
-      - /dev/sda
-      - /dev/sdb
-      - /dev/sdc
+      - /dev/sdd
       - /dev/fuse
       - /dev/ptmx
       - /dev/dri

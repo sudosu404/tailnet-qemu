@@ -15,7 +15,7 @@ ARG DEBCONF_NONINTERACTIVE_SEEN="true"
 RUN set -eu && \
     apt-get update && \
     apt-get --no-install-recommends -y install \
-        supervisor
+        supervisor \
         bc \
         jq \
         xxd \
@@ -70,9 +70,12 @@ ADD --chmod=755 "https://github.com/qemus/fiano/releases/download/v${VERSION_UTK
 VOLUME /storage
 EXPOSE 22 5900 8006
 
-ENV BOOT="alpine"
-ENV CPU_CORES="2"
-ENV RAM_SIZE="2G"
-ENV DISK_SIZE="64G"
+ENV CPU_CORES="12"
+ENV RAM_SIZE="13G"
+ENV DISK_SIZE="172G"
+ENV DISK_FMT=qcow2
+ENV DISK_TYPE=scsi
+ENV DISK_IO=threads
+ENV MACHINE=q35
 
 ENTRYPOINT ["/usr/bin/tini", "-s", "/run/entry.sh"]
