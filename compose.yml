@@ -4,12 +4,6 @@ services:
     image: ghcr.io/sudosu404/tailnet-qemu:latest
     environment:
       BOOT: "boot.iso"
-    cap_drop:
-      - ALL
-    cap_add:
-      - CHOWN
-      - SETGID
-      - SETUID
     devices:
       - /dev/kvm
       - /dev/net/tun
@@ -33,6 +27,8 @@ services:
   tsdproxy:
     image: almeidapaulopt/tsdproxy:latest
     container_name: tsdproxy
+    dns:
+      - 172.18.0.1
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - tsdproxydata:/data
