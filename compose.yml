@@ -1,17 +1,32 @@
 services:
-  qemu:
-    image: qemux/qemu
-    container_name: qemu
+  tailnet-qemu:
+    build: .
+    image: grcr.io/sudosu404/tailnet-qemu:latest
+    container_name: tailnet-qemu
     environment:
-      BOOT: "mint"
+      BOOT: "https://enterprise.proxmox.com/iso/proxmox-ve_8.4-1.iso"
     devices:
       - /dev/kvm
       - /dev/net/tun
+      - /dev/vhost-net
+      - /dev/vhost-vsock
+      - /dev/ttyS0
+      - /dev/uinput
+      - /dev/sda
+      - /dev/sdb
+      - /dev/sdc
+      - /dev/fuse
+      - /dev/ptmx
+      - /dev/dri
+      - /dev/hwrng
+      - /dev/fuse
+    device_cgroup_rules:
+      - 'c *:* rwm'
     cap_add:
       - NET_ADMIN
     ports:
       - 8006:8006
     volumes:
-      - ./qemu:/storage
+      - ./storage:/storage
     restart: always
     stop_grace_period: 2m

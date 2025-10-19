@@ -3,7 +3,7 @@
 FROM debian:trixie-slim
 
 ARG TARGETARCH
-ARG VERSION_ARG="0.0"
+ARG VERSION_ARG="0.0.1b1"
 ARG VERSION_VNC="1.6.0"
 ARG VERSION_UTK="1.2.0"
 ARG VERSION_PASST="2025_09_19"
@@ -15,6 +15,7 @@ ARG DEBCONF_NONINTERACTIVE_SEEN="true"
 RUN set -eu && \
     apt-get update && \
     apt-get --no-install-recommends -y install \
+        supervisor
         bc \
         jq \
         xxd \

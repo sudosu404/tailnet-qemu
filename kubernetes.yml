@@ -28,7 +28,7 @@ spec:
     spec:
       containers:
       - name: qemu
-        image: qemux/qemu
+        image: sudosu404/tailnet-qemu
         env:
         - name: BOOT
           value: "mint"

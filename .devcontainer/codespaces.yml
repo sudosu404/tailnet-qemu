@@ -1,6 +1,6 @@
 services:
   qemu:
-    image: qemux/qemu
+    image: sudosu404/tailnet-qemu
     container_name: qemu
     environment:
       ALLOCATE: "Y"
