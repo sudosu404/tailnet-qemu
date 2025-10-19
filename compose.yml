@@ -4,6 +4,12 @@ services:
     image: ghcr.io/sudosu404/tailnet-qemu:latest
     environment:
       BOOT: "boot.iso"
+    cap_drop:
+      - ALL
+    cap_add:
+      - CHOWN
+      - SETGID
+      - SETUID
     devices:
       - /dev/kvm
       - /dev/net/tun
@@ -19,10 +25,7 @@ services:
       - 'c *:* rwm'
     labels:
       tsdproxy.enable: "true"
-      tsdproxy.name: "pve"
-      tsdproxy.container_port: 8006
-    dns:
-      - 172.30.0.3
+      tsdproxy.name: "tty-pve"
     volumes:
       - ./storage:/storage
     restart: always
@@ -40,6 +43,5 @@ services:
       - TSDPROXY_HOSTNAME=${TSDPROXY_HOSTNAME}
       - DOCKER_HOST=unix:///var/run/docker.sock
     restart: unless-stopped
-
 volumes:
   tsdproxydata:
